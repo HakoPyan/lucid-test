@@ -1,0 +1,29 @@
+app:
+  title: Lucid Financials test
+  env: dev
+  debug: false
+  service_name: lucid-test
+  servers:
+    - url: /
+      description: current server
+  openapi_tags:
+    - name: auth
+      description: Endpoints for authentication
+  contact:
+    name: Arsen Hakobyan
+    email: arsenehakobian@gmail.com
+    url: https://github.com/HakoPyan/lucid-test
+
+docs:
+  openapi_url: /openapi.json
+  docs_url: /docs
+  redoc_url: /redoc
+  description: Lucid Financials test
+
+password_generator:
+  alphabet: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+  length: 8
+
+jwt:
+  algorithms: ['HS256']
+  access_token_exp_delta: PT1H

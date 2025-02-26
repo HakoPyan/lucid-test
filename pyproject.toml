@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "lucid-test"
+version = "0.0.1"
+description = ""
+authors = ["Arsen Hakobyan <arsenehakobian@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+dependency-injector = "^4.44.0"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+sqlalchemy = "^2.0.16"
+fastapi = "^0.114.2"
+alembic = "^1.13.2"
+pydantic = {extras = ["email"], version = "^2.10.3"}
+pyjwt = "^2.9.0"
+pydantic-settings = "^2.6.1"
+aiomysql = "^0.2.0"
+cryptography = "^44.0.1"
+cachetools = "^5.5.2"
+
+[tool.poetry.group.dev.dependencies]
+openapi-spec-validator = "^0.5.7"

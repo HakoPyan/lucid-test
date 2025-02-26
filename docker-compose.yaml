@@ -1,0 +1,46 @@
+services:
+  migrator:
+    build:
+      context: .
+      target: app
+    volumes:
+      - .:/src
+    depends_on:
+      - db
+      - app
+    environment:
+      TZ: UTC
+      SENTRY_DSN: ${SENTRY_DSN}
+      DB_DSN: ${DB_DSN}
+    command: alembic upgrade head
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      target: app
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/src
+    depends_on:
+      db:
+        condition: service_started
+
+
+volumes:
+  mysql:
