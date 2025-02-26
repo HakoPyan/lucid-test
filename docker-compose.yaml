@@ -10,7 +10,6 @@ services:
       - app
     environment:
       TZ: UTC
-      SENTRY_DSN: ${SENTRY_DSN}
       DB_DSN: ${DB_DSN}
     command: alembic upgrade head
 
