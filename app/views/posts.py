@@ -45,7 +45,7 @@ async def create(
     post_service: PostService = Depends(Provide[AppContainer.post_service]),
 ):
     """Endpoint for creating user posts."""
-    cache.pop(user_id)
+    cache.pop(user_id, None)
     return await post_service.create(db_session, data, user_id)
 
 

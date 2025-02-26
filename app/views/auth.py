@@ -21,6 +21,7 @@ async def sign_up(
     db_session: AsyncSession = Depends(db_session_dependency),
     auth_service: AuthService = Depends(Provide[AppContainer.auth_service]),
 ):
+    """Sign up endpoint."""
     return await auth_service.sign_up(db_session, data)
 
 
@@ -32,4 +33,5 @@ async def login(
     db_session: AsyncSession = Depends(db_session_dependency),
     auth_service: AuthService = Depends(Provide[AppContainer.auth_service]),
 ):
+    """Login endpoint."""
     return await auth_service.login(db_session, data)
